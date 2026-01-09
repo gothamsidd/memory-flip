@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Memory Flip - Card Matching Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="game-title">
+                <span class="title-icon">🧠</span>
+                Memory Flip
+            </h1>
+            <p class="subtitle">Match the pairs to win!</p>
+        </header>
+
+        <div class="game-stats">
+            <div class="stat-card">
+                <div class="stat-label">Time</div>
+                <div class="stat-value" id="timer">00:00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Moves</div>
+                <div class="stat-value" id="moves">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Matches</div>
+                <div class="stat-value" id="matches">0 / 0</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <select id="difficulty" class="difficulty-select">
+                <option value="easy">Easy (4x4)</option>
+                <option value="medium" selected>Medium (4x5)</option>
+                <option value="hard">Hard (5x6)</option>
+            </select>
+            <select id="theme" class="difficulty-select">
+                <option value="gaming">🎮 Gaming</option>
+                <option value="sports">⚽ Sports</option>
+                <option value="animals">🐾 Animals</option>
+                <option value="food">🍕 Food</option>
+                <option value="nature">🌿 Nature</option>
+            </select>
+            <button id="new-game" class="btn btn-primary">New Game</button>
+            <button id="reset" class="btn btn-secondary">Reset</button>
+            <button id="dark-mode-toggle" class="btn btn-secondary" title="Toggle Dark Mode">🌙</button>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-text" id="progress-text">0%</span>
+        </div>
+
+        <div class="high-scores">
+            <div class="score-item">
+                <span class="score-label">Best Time:</span>
+                <span class="score-value" id="best-time">--:--</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">Best Moves:</span>
+                <span class="score-value" id="best-moves">--</span>
+            </div>
+        </div>
+
+        <div class="game-board" id="game-board">
+            <!-- Cards will be generated here -->
+        </div>
+
+        <div class="modal" id="win-modal">
+            <div class="modal-content">
+                <div class="modal-icon">🎉</div>
+                <h2>Congratulations!</h2>
+                <p>You've matched all pairs!</p>
+                <div class="modal-stats">
+                    <div class="modal-stat">
+                        <span class="modal-stat-label">Time:</span>
+                        <span class="modal-stat-value" id="final-time">00:00</span>
+                    </div>
+                    <div class="modal-stat">
+                        <span class="modal-stat-label">Moves:</span>
+                        <span class="modal-stat-value" id="final-moves">0</span>
+                    </div>
+                </div>
+                <div id="new-record" class="new-record" style="display: none;">
+                    🏆 New Record! 🏆
+                </div>
+                <button class="btn btn-primary" id="play-again">Play Again</button>
+            </div>
+        </div>
+
+        <div class="modal" id="stats-modal">
+            <div class="modal-content">
+                <h2>📊 Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-item-label">Games Played:</span>
+                        <span class="stat-item-value" id="games-played">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">Games Won:</span>
+                        <span class="stat-item-value" id="games-won">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">Win Rate:</span>
+                        <span class="stat-item-value" id="win-rate">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-item-label">Total Moves:</span>
+                        <span class="stat-item-value" id="total-moves">0</span>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" id="close-stats">Close</button>
+            </div>
+        </div>
+
+        <button id="stats-btn" class="stats-button" title="View Statistics">📊</button>
+
+        <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <footer class="credit">
+        by <span class="credit-name">gothamsidd</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
