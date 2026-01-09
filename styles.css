@@ -35,6 +35,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .container {
@@ -47,6 +49,8 @@ body {
     backdrop-filter: blur(10px);
     transition: background 0.3s ease;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 header {
@@ -66,17 +70,11 @@ header {
 }
 
 .title-icon {
-    font-size: 3.5rem;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+    width: 56px;
+    height: 56px;
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
 }
 
 .subtitle {
@@ -100,6 +98,7 @@ header {
     text-align: center;
     box-shadow: var(--shadow);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-card:hover {
@@ -207,10 +206,11 @@ header {
     cursor: pointer;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow);
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
 .card.flipped {
@@ -432,7 +432,8 @@ header {
     }
 
     .title-icon {
-        font-size: 2.5rem;
+        width: 40px;
+        height: 40px;
     }
 
     .subtitle {
@@ -568,7 +569,8 @@ header {
     }
 
     .title-icon {
-        font-size: 2rem;
+        width: 32px;
+        height: 32px;
     }
 
     .subtitle {
@@ -729,7 +731,8 @@ header {
     }
 
     .title-icon {
-        font-size: 1.75rem;
+        width: 28px;
+        height: 28px;
     }
 
     .card-front,

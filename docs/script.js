@@ -44,7 +44,7 @@ class MemoryGame {
         this.newRecordBadge = document.getElementById('new-record');
         this.confettiCanvas = document.getElementById('confetti-canvas');
         
-        // Set canvas size
+        // canvas setup
         this.confettiCanvas.width = window.innerWidth;
         this.confettiCanvas.height = window.innerHeight;
         
@@ -162,7 +162,7 @@ class MemoryGame {
         if (card.classList.contains('matched')) return;
         if (this.flippedCards.length >= 2) return;
 
-        // Start timer on first move
+        // start timer when first card is clicked
         if (this.moves === 0 && !this.startTime) {
             this.startTimer();
         }
@@ -182,7 +182,7 @@ class MemoryGame {
         const [card1, card2] = this.flippedCards;
 
         if (card1.dataset.emoji === card2.dataset.emoji) {
-            // Match found!
+            // match!
             setTimeout(() => {
                 card1.classList.add('matched');
                 card2.classList.add('matched');
@@ -197,7 +197,7 @@ class MemoryGame {
                 }
             }, 500);
         } else {
-            // No match
+            // wrong match, flip back
             setTimeout(() => {
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
@@ -249,7 +249,7 @@ class MemoryGame {
         this.finalTimeDisplay.textContent = timeString;
         this.finalMovesDisplay.textContent = this.moves;
 
-        // Update statistics
+        // update stats
         if (!this.stats.gameStarted) {
             this.stats.gamesPlayed++;
             this.stats.gameStarted = true;
@@ -258,7 +258,7 @@ class MemoryGame {
         this.stats.totalMoves += this.moves;
         this.saveStats();
 
-        // Check for new records
+        // check if new record
         const currentBestTime = this.highScores[this.difficulty]?.bestTime || Infinity;
         const currentBestMoves = this.highScores[this.difficulty]?.bestMoves || Infinity;
         let newRecord = false;
@@ -285,7 +285,7 @@ class MemoryGame {
             this.newRecordBadge.style.display = 'none';
         }
 
-        // Launch confetti
+        // confetti time!
         this.launchConfetti();
 
         setTimeout(() => {
@@ -295,7 +295,6 @@ class MemoryGame {
     }
 
     startNewGame() {
-        // Reset game state
         this.stopTimer();
         this.cards = [];
         this.flippedCards = [];
@@ -307,11 +306,11 @@ class MemoryGame {
             this.stats.gameStarted = false;
         }
 
-        // Clear board
+        // clear the board
         this.gameBoard.innerHTML = '';
         this.gameBoard.className = `game-board ${this.difficulty}`;
 
-        // Generate cards
+        // create new cards
         const cardPairs = this.generateCardPairs();
         cardPairs.forEach((emoji, index) => {
             const card = this.createCard(emoji, index);
@@ -319,18 +318,16 @@ class MemoryGame {
             this.gameBoard.appendChild(card);
         });
 
-        // Reset displays
+        // reset UI
         this.timerDisplay.textContent = '00:00';
         this.updateMovesDisplay();
         this.updateMatchesDisplay();
         this.updateProgress();
         this.newRecordBadge.style.display = 'none';
 
-        // Hide modals if open
         this.winModal.classList.remove('show');
     }
 
-    // Dark Mode Functions
     toggleDarkMode() {
         this.darkMode = !this.darkMode;
         this.applyDarkMode();
@@ -346,8 +343,6 @@ class MemoryGame {
             this.darkModeToggle.textContent = '🌙';
         }
     }
-
-    // LocalStorage Functions
     loadStats() {
         const saved = localStorage.getItem('gameStats');
         return saved ? JSON.parse(saved) : {
@@ -393,11 +388,10 @@ class MemoryGame {
         document.getElementById('total-moves').textContent = this.stats.totalMoves;
     }
 
-    // Confetti Animation
     launchConfetti() {
         const ctx = this.confettiCanvas.getContext('2d');
         const particles = [];
-        const particleCount = 150;
+        const particleCount = 150; // more confetti = more fun
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({
@@ -422,7 +416,7 @@ class MemoryGame {
                     activeParticles++;
                     particle.x += particle.vx;
                     particle.y += particle.vy;
-                    particle.vy += 0.1; // gravity
+                    particle.vy += 0.1; // gravity effect
                     particle.rotation += particle.rotationSpeed;
 
                     ctx.save();
@@ -445,7 +439,7 @@ class MemoryGame {
     }
 }
 
-// Initialize game when DOM is loaded
+// start the game
 document.addEventListener('DOMContentLoaded', () => {
     new MemoryGame();
 });

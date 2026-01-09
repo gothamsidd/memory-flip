@@ -67,15 +67,19 @@ header {
 
 .title-icon {
     font-size: 3.5rem;
-    animation: pulse 2s ease-in-out infinite;
+    animation: brainFloat 2.8s ease-in-out infinite;
+    display: inline-block;
 }
 
-@keyframes pulse {
+@keyframes brainFloat {
     0%, 100% {
-        transform: scale(1);
+        transform: translateY(0) rotate(0deg);
     }
-    50% {
-        transform: scale(1.1);
+    30% {
+        transform: translateY(-6px) rotate(-2deg);
+    }
+    60% {
+        transform: translateY(-3px) rotate(2deg);
     }
 }
 
