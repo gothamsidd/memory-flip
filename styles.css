@@ -947,19 +947,20 @@ header {
 /* Credit Footer */
 .credit {
     position: fixed;
-    bottom: 16px;
-    left: 16px;
-    font-size: 0.8rem;
+    bottom: 8px;
+    left: 8px;
+    font-size: 0.75rem;
     color: var(--text-primary);
     font-weight: 500;
     z-index: 100;
     background: rgba(255, 255, 255, 0.9);
-    padding: 6px 12px;
-    border-radius: 16px;
+    padding: 5px 10px;
+    border-radius: 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     border: 1px solid rgba(99, 102, 241, 0.2);
+    pointer-events: none;
 }
 
 .credit:hover {
@@ -971,7 +972,7 @@ header {
 .credit-name {
     font-weight: 700;
     color: var(--primary-color);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 [data-theme="dark"] .credit {
@@ -990,40 +991,40 @@ header {
 
 @media (max-width: 768px) {
     .credit {
-        font-size: 0.75rem;
-        bottom: 12px;
-        left: 12px;
-        padding: 5px 10px;
+        font-size: 0.7rem;
+        bottom: 8px;
+        left: 8px;
+        padding: 4px 8px;
     }
     
     .credit-name {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .credit {
-        font-size: 0.7rem;
-        bottom: 10px;
-        left: 10px;
-        padding: 5px 10px;
-        border-radius: 14px;
+        font-size: 0.65rem;
+        bottom: 6px;
+        left: 6px;
+        padding: 4px 8px;
+        border-radius: 12px;
     }
     
     .credit-name {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 }
 
 @media (max-width: 360px) {
     .credit {
-        font-size: 0.65rem;
-        padding: 4px 8px;
-        bottom: 8px;
-        left: 8px;
+        font-size: 0.6rem;
+        padding: 3px 6px;
+        bottom: 4px;
+        left: 4px;
     }
     
     .credit-name {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
 }
